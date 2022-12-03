@@ -1,0 +1,25 @@
+{
+  "name": "design-patterns",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/behnamrhp/js-pattern-examples.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/behnamrhp/js-pattern-examples/issues"
+  },
+  "homepage": "https://github.com/behnamrhp/js-pattern-examples#readme",
+  "dependencies": {
+    "@types/node": "^18.11.10"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  }
+}

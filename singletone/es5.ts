@@ -3,12 +3,13 @@ const SignletoneExample = (function(){
     this.numProcess = 0
   }
 
-  let pManager;
+  let pManager: typeof ProcessManager;
 
   return {
-    getProcessManager: () => {
+    getProcessManager(){
       if( !pManager ) pManager = new ProcessManager()
 
+      
       return pManager
     }
   }
