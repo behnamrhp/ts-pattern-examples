@@ -11,7 +11,7 @@ interface IEmploeeSalary {
 }
 
 /**
- * this is the our default chaining handler 
+ * this is the our base chaining handler to handle same method through all of chaining handlers
  */
 abstract class AbstractEmploeeCOR implements IEmploeeSalary {
   private nextCalculator: IEmploeeSalary;
