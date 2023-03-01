@@ -11,4 +11,6 @@ you can use this pattern in some scenarios that you have multiple functionalitie
 ## Example
 
 in this example we tried to use the most basic and simple one.
-we have multiple types of emploees that we want calculate their salaries by their positions. so we have multiple salary calcualtor that they decide to calculate the salary if request has specific emploee type or send it to the next salary calculator as next handler.
+we have multiple types of emploees that we want calculate their salaries by their positions.
+
+so we have multiple salary calcualtor that they decide to calculate the salary if request has specific emploee type or send it to the next salary calculator as next handler.
