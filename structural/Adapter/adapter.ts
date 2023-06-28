@@ -12,7 +12,7 @@ type User = {
  * but they have different interfaces to be connected
  */
 class DataSource {
-  execute(userId: number): User{
+  execute(_userId: number): User{
     const user = {
       name: 'john',
       lastname: 'miller',
@@ -42,7 +42,7 @@ class RepositoryAdapter implements IRepositoryAdapter {
   }
 
   getArticles(articleSlug: string) {
-    console.log('find user id by article Id');
+    // Find user id by article Id.
     const userID = this.getUserIdByArticleSlug(articleSlug);
     const user = this.adaptee.execute(userID)
 
@@ -82,7 +82,7 @@ class HandleArticleUsecase {
 
   execute(articleSlug: string) {
     const articles = this.repository.getArticles(articleSlug);
-    console.log('Doing some logics about the articles');
+    // Doing some logics about the articles.
     return articles;
   }
 }
@@ -90,7 +90,8 @@ class HandleArticleUsecase {
 /* ------------------------------- client code ------------------------------ */
 function articleHandlerClient(usecase: HandleArticleUsecase) {
   const articleSlug = 'article-slug'
-  usecase.execute(articleSlug);
+  const articles = usecase.execute(articleSlug);
+  console.log('our articles is: ', articles);
 }
 
 const dataSource = new DataSource();
