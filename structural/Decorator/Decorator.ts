@@ -28,7 +28,7 @@ class ConsoleLogger implements ILoggers {
  * This is another main logic that we wants, improve its functionality in 
  * runtime without touching its implementation
  */
-class ConsoleTableLogger implements ILoggers {
+class ConsoleErrorLogger implements ILoggers {
   log(message: string) {
     console.error(
       `this is the another logging for error logs and the messaage is -> ${message}`
@@ -75,8 +75,7 @@ class SaveToCSVFileLoggerDecorator extends SaveToFileLoggersDecorator {
 /* -------------------------------------------------------------------------- */
 /*                                 Client Code                                */
 /* -------------------------------------------------------------------------- */
-
-const logger = new ConsoleTableLogger()
+const logger = new ConsoleErrorLogger()
 
 const decorator = new SaveToCSVFileLoggerDecorator(logger)
 
