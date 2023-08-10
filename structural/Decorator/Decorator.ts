@@ -2,9 +2,9 @@
 /*                            Main Logic Interface                            */
 /* -------------------------------------------------------------------------- */
 /**
- * This is the main logic's interface that is using in the main logics
- * and in the Decorators we want to use it 
- * and add some more functionality to it
+ * This is the interface that main logics using it
+ * in the app and in the Decorators we want to use it 
+ * to add some more functionality to it
  */
 interface ILoggers {
   log(message: string): void;
@@ -14,8 +14,8 @@ interface ILoggers {
 /*                                 Main Logics                                */
 /* -------------------------------------------------------------------------- */
 /**
- * This is on of our main logic that we are using in the app
- * we need to improve it's functionality in the runtime without touching
+ * This is one of our main logics that we are using them inside of our app
+ * and we need to improve it's functionality in the runtime without touching
  * its implementation
  */
 class ConsoleLogger implements ILoggers {
@@ -25,8 +25,8 @@ class ConsoleLogger implements ILoggers {
 }
 
 /**
- * This is another main logic that we wants, improve its functionality in 
- * runtime without touching its implementation
+ * This is another main logic that we want to improve its functionality in 
+ * runtime without touching its implementation or duplication our codes
  */
 class ConsoleErrorLogger implements ILoggers {
   log(message: string) {
@@ -42,8 +42,8 @@ class ConsoleErrorLogger implements ILoggers {
 /**
  * This is the main parent for decorators to get decorator to 
  * handle the main operation by other decorators.
- * Note: you can handle extra funtionality in this class as well if you
- * don't have multiple decorators
+ * Note: you can handle extra funtionality directly in this class instead of
+ * making multiple decorators
  */
 class SaveToFileLoggersDecorator implements ILoggers {
 /* ------------------------------ Dependencies ------------------------------ */
@@ -62,6 +62,12 @@ class SaveToFileLoggersDecorator implements ILoggers {
 /* -------------------------------------------------------------------------- */
 /*                                 Decorators                                 */
 /* -------------------------------------------------------------------------- */
+/**
+ * This is one of the decorators, that we can use it and we extending it from 
+ * the main decorator parent.
+ * Note: You can add multiple decorators like this,
+ * to add different functionality to main logics. 
+ */
 class SaveToCSVFileLoggerDecorator extends SaveToFileLoggersDecorator {
   /**
    * Decorators can call supper main operation to run default logics as well
