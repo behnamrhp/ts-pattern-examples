@@ -52,7 +52,7 @@ class SaveToFileLoggersDecorator implements ILoggers {
   constructor(logger: ILoggers) {
     this.logger = logger;
   }
-/* -------------------------------------------------------------------------- */
+/* ----------------------------- Implementation ----------------------------- */
   log(message: string) {
     this.logger.log(message);
   }
