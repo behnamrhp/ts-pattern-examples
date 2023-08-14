@@ -2,8 +2,9 @@
 /*                                  Flyweigth                                 */
 /* -------------------------------------------------------------------------- */
 /**
- * This class acts as our intrinsic object that contains all shared that each 
- *  character can have in same way
+ * This class serves as our intrinsic object containing 
+ *  all shared data that each character can have in the same way.
+ * 
  */
 class CharacterStyleFlyweight {
 /* ------------------------------ Dependencies ------------------------------ */
@@ -40,6 +41,7 @@ class CharacterStyleFlyweight {
 /* -------------------------------------------------------------------------- */
 /**
  * This class responsible for managing, caching and sharing the intrinsic object 
+ *  and return the shared values
  */
 class CharacterStyleFlyweightFactory {
 /* -------------------------------------------------------------------------- */
@@ -91,7 +93,7 @@ const editor = new TextEditor(new CharacterStyleFlyweightFactory());
 editor.addText("Hello", "Arial", 12, "blue");
 editor.addText("World", "Times New Roman", 16, "red");
 /**
- * In this line we add different extrinsic value but with same intrinsic values.
+ * In this line we'll add different extrinsic value but with same intrinsic values.
  * So we'll use the shared flyweight intrinsic values for this content so
  *  we can use less memory for further data
  *  
