@@ -1,0 +1,36 @@
+@startuml Transportation Simple Factory pattern
+
+interface ITransportation {
+  createTransport()
+}
+
+class Truck {
+  + createTransport()
+}
+
+class Ship {
+  + createTransport()
+}
+
+Truck ..|> ITransportation
+Ship ..|> ITransportation
+
+class LogisticFactory {
+  ITransportation create()
+}
+
+LogisticFactory --> ITransportation : returns
+LogisticFactory --> TransportationEnum : uses
+
+enum TransportationEnum {
+  Ship
+  Truck
+}
+
+class clientCode {}
+
+clientCode --> TransportationEnum : uses
+clientCode --o LogisticFactory
+
+
+@enduml
