@@ -30,7 +30,7 @@ enum TransportationEnum {
 class clientCode {}
 
 clientCode --> TransportationEnum : uses
-clientCode --* LogisticFactory
+clientCode --o LogisticFactory
 
 
 @enduml
