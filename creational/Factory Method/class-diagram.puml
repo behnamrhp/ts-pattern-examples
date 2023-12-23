@@ -1,0 +1,30 @@
+@startuml Factory Method
+
+abstract class ThemeFactoryCreator {
+  {abstract} ITheme factoryMethod() 
+  + void saveFinalTheme()
+}
+
+class UserThemeCreator {
+  # ITheme factoryMethod()
+}
+
+class DefaultThemeCreator {
+  # ITheme factoryMethod()
+  - string getPalletteMode()
+}
+
+interface ITheme {
+  string background
+  string text
+}
+
+ThemeFactoryCreator ..> ITheme
+UserThemeCreator --|> ThemeFactoryCreator
+DefaultThemeCreator --|> ThemeFactoryCreator
+
+class clientCode {}
+
+clientCode --o ThemeFactoryCreator
+
+@enduml
