@@ -16,7 +16,7 @@ abstract class ThemeFactoryCreator {
    *  factory method returnes
    */
   public saveFinalTheme(): void {
-    const finalTheme = this.factoryMethod()
+    this.factoryMethod()
     console.log(`Creator saved final theme based on factory method that is: ${this.factoryMethod}`)
   }
 }
