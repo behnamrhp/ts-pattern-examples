@@ -1,5 +1,10 @@
 @startuml Abstract factory example class diagram
 
+interface ICamFactory {
+  recordInstance(): IRecord
+  saveInstance(): ISaveVideo 
+}
+
 interface IRecord {
   Boolean start()
   Boolean stop()
@@ -11,34 +16,29 @@ interface ISaveVideo {
   Boolean saveVideo(String path)
 }
 
-interface ICamFactory {
-  recordInstance(): IRecord
-  saveInstance(): ISaveVideo 
-}
 
-
-package Android {
-  class AndroidFactory {
+package Mobile {
+  class MobileFactory {
     recordInstance(): IRecord
     saveInstance(): ISaveVideo 
   }
 
-  class AndroidSave {
+  class MobileSave {
     Boolean checkEnoughSpace()
     Boolean saveVideo(String path)
   }
 
-  class AndroidRecord {
+  class MobileRecord {
     Boolean start()
     Boolean stop()
     Boolean pause()
   }
 
-  AndroidSave ..|> ISaveVideo
-  AndroidRecord ..|> IRecord
+  MobileSave ..|> ISaveVideo
+  MobileRecord ..|> IRecord
 
-  AndroidFactory ..> AndroidSave
-  AndroidFactory ..> AndroidRecord
+  MobileFactory ..> MobileSave
+  MobileFactory ..> MobileRecord
 }
 
 package Windows {
@@ -65,34 +65,8 @@ package Windows {
   WinFactory ..> WinRecord
 }
 
-
-package IOS {
-  class IosFactory {
-    recordInstance(): IRecord
-    saveInstance(): ISaveVideo 
-  }
-
-  class IosSave {
-    Boolean checkEnoughSpace()
-    Boolean saveVideo(String path)
-  }
-
-  class IosRecord {
-    Boolean start()
-    Boolean stop()
-    Boolean pause()
-  }
-
-  IosSave ..|> ISaveVideo
-  IosRecord ..|> IRecord
-
-  IosFactory ..> IosSave
-  IosFactory ..> IosRecord
-}
-
 WinFactory ..|> ICamFactory
-AndroidFactory ..|> ICamFactory
-IosFactory ..|> ICamFactory
+MobileFactory ..|> ICamFactory
 
 class Application {
   ICamFactory factory
