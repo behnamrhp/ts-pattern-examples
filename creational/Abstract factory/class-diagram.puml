@@ -1,0 +1,84 @@
+@startuml Abstract factory example class diagram
+
+interface ICamFactory {
+  recordInstance(): IRecord
+  saveInstance(): ISaveVideo 
+}
+
+interface IRecord {
+  Boolean start()
+  Boolean stop()
+  Boolean pause()
+}
+
+interface ISaveVideo {
+  Boolean checkEnoughSpace()
+  Boolean saveVideo(String path)
+}
+
+
+package Mobile {
+  class MobileFactory {
+    recordInstance(): IRecord
+    saveInstance(): ISaveVideo 
+  }
+
+  class MobileSave {
+    Boolean checkEnoughSpace()
+    Boolean saveVideo(String path)
+  }
+
+  class MobileRecord {
+    Boolean start()
+    Boolean stop()
+    Boolean pause()
+  }
+
+  MobileSave ..|> ISaveVideo
+  MobileRecord ..|> IRecord
+
+  MobileFactory ..> MobileSave
+  MobileFactory ..> MobileRecord
+}
+
+package Windows {
+  class WinFactory {
+    recordInstance(): IRecord
+    saveInstance(): ISaveVideo 
+  }
+
+  class WinSave {
+    Boolean checkEnoughSpace()
+    Boolean saveVideo(String path)
+  }
+
+  class WinRecord {
+    Boolean start()
+    Boolean stop()
+    Boolean pause()
+  }
+
+  WinSave ..|> ISaveVideo
+  WinRecord ..|> IRecord
+
+  WinFactory ..> WinSave
+  WinFactory ..> WinRecord
+}
+
+WinFactory ..|> ICamFactory
+MobileFactory ..|> ICamFactory
+
+class Application {
+  ICamFactory factory
+  IRecord record
+  ISaveVideo save
+
+  startRecord()
+  saveRecoredVideo()
+}
+
+Application --> ICamFactory
+Application ..> IRecord
+Application ..> ISaveVideo
+
+@enduml
