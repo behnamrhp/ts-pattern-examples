@@ -1,0 +1,73 @@
+@startuml Abstract factory vs Factory Method
+
+package FactoryMethod {
+  class PizzaStore {
+    + Pizza createPizza()
+    + payment()
+  }
+  note left
+  We have a Pizza store which it sells
+    two kinds of pizza but their payments 
+    process are same. so this abstract class
+    handle main business logic related to the 
+    same logics of all kinds products
+  end note
+
+  interface Pizza {}
+  note bottom
+  This interface declare methods that all
+    concrete pizza products should 
+    implement them 
+  end note
+
+  PizzaStore ..> Pizza
+
+  class NYPizzaStore {
+    + Pizza createPizza()
+  }
+  note left
+  This is one of our factory methods
+    that extends from base abstract factory.
+  It's main responsibility is to be a factory
+    for creating one kind of products
+  end note
+  NYPizzaStore --|> PizzaStore
+  NYPizzaStore --> NYstylePepperoniPizza
+
+  class ChicagoPizzaStore {
+    + Pizza createPizza()
+  }
+  note left
+  This is one of our factory methods
+    that extends from base abstract factory.
+  It's main responsibility is to be a factory
+    for creating one kind of products
+  end note
+  ChicagoPizzaStore --|> PizzaStore
+  ChicagoPizzaStore --> ChicagoStylePepperoniPizza
+
+  class client{}
+  client --> ChicagoPizzaStore
+  client --> NYPizzaStore
+
+  class NYstylePepperoniPizza {}
+  note bottom
+  This is one of a concrete pizza products
+    that implements Pizza interface. 
+  This will handle all logics about creating 
+    this kind of pizza
+  It will instantiated by one related factories.
+  end note
+  NYstylePepperoniPizza ..|> Pizza
+  class ChicagoStylePepperoniPizza{}
+  note bottom
+  This is one of a concrete pizza products
+    that implements Pizza interface. 
+  This will handle all logics about creating 
+    this kind of pizza
+  It will instantiated by one related factories.
+  end note
+  ChicagoStylePepperoniPizza ..|> Pizza
+}
+
+@enduml
