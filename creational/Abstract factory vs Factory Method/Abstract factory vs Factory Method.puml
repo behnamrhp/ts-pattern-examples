@@ -70,4 +70,78 @@ package FactoryMethod {
   ChicagoStylePepperoniPizza ..|> Pizza
 }
 
+
+package AbstractFactory {
+  interface PizzaIngredientsFactory {
+    + Dough createDough()
+    + Sauce createSauce()
+    + Cheese createCheese()
+  }
+  note top
+  This interface declares mehthods which
+    makes abstract products.
+  Each family can implement and create 
+    products related to their own type. 
+  end note
+
+  class NYPizzaIngredientFactory {
+    + Dough createDough()
+    + Sauce createSauce()
+    + Cheese createCheese()
+  }
+  note top
+  This is a family factory which it implements our 
+    main interface of needed abstract product
+  end note
+  NYPizzaIngredientFactory ..|> PizzaIngredientsFactory
+
+  class ChicagoPizzaIngredientFactory {
+    + Dough createDough()
+    + Sauce createSauce()
+    + Cheese createCheese()
+  }
+  note top
+  This is a family factory which it implements our 
+    main interface of needed abstract product
+  end note
+  ChicagoPizzaIngredientFactory ..|> PizzaIngredientsFactory
+
+  interface Dough {}
+  interface Sauce {}
+  interface Cheese {}
+
+  class ThinCrustDough {}
+  note bottom
+  Each ingredient represents a product that is produced
+   by a Factory Method in the Abstract Factory.
+  end note
+  ThinCrustDough ..|> Dough
+  class ThickCrustDough {}
+  ThickCrustDough ..|> Dough
+
+  class MarinaraSauce {}
+  MarinaraSauce ..|> Sauce
+
+  class PlumTomatoSauce {}
+  PlumTomatoSauce ..|> Sauce
+
+  class ReggianoCheese {}
+  ReggianoCheese ..|> Cheese
+
+  class MozzarellaCheese {}
+  MozzarellaCheese ..|> Cheese
+
+  ChicagoPizzaIngredientFactory --> MozzarellaCheese  
+  ChicagoPizzaIngredientFactory --> PlumTomatoSauce  
+  ChicagoPizzaIngredientFactory --> ThickCrustDough 
+
+  NYPizzaIngredientFactory -->  ThinCrustDough
+  NYPizzaIngredientFactory -->  MarinaraSauce
+  NYPizzaIngredientFactory -->  ReggianoCheese
+
+  class client {}
+  client --> NYPizzaIngredientFactory
+  client --> ChicagoPizzaIngredientFactory
+}
+
 @enduml
